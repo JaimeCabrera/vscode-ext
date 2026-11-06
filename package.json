@@ -1,0 +1,42 @@
+{
+  "name": "selective-commit",
+  "displayName": "Selective Commit",
+  "description": "PyCharm-style commit panel: pick which changed files go into a commit.",
+  "version": "0.0.1",
+  "publisher": "solnus",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["SCM Providers"],
+  "main": "./out/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "views": {
+      "scm": [
+        {
+          "type": "webview",
+          "id": "selectiveCommit.panel",
+          "name": "Commit"
+        }
+      ]
+    },
+    "commands": [
+      { "command": "selectiveCommit.refresh", "title": "Selective Commit: Refresh", "icon": "$(refresh)" }
+    ],
+    "menus": {
+      "view/title": [
+        { "command": "selectiveCommit.refresh", "when": "view == selectiveCommit.panel", "group": "navigation" }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.4.0"
+  }
+}
